@@ -1,0 +1,21 @@
+---
+const isFrench = Astro.currentLocale === 'fr';
+const localePrefix = isFrench ? '/fr' : '';
+const header = isFrench
+    ? { title: "Éducation"}
+    : { title: "Education"}
+---
+<h2>{header.title}</h2>
+<ul>
+    <li>The University of New Hampshire - Durham, NH (2025-Present)</li>
+    <ul>
+        <li>B.S. in Applied Mathematics, Concentration in Computations</li>
+        <li>Member, Hamel Honors and Scholars College</li>
+    </ul>
+    <li>Nashua Community College - Nashua, NH (2023-2025)</li>
+    <ul>
+        <li>A.S. in Computer Science</li>
+        <li>Member, Phi Theta Kappa Honor Society</li>
+        <li>Graduated Summa Cum Laude</li>
+    </ul>
+</ul>

@@ -1,0 +1,135 @@
+---
+import Header from "../../components/Header.astro"
+import Project from "../../components/Project.astro"
+import "../../styles/global.css"
+import Education from "../../components/Education.astro";
+---
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Matt Heenan-Labrecque</title>
+</head>
+
+<Header/>
+
+<div class="profile-text">
+
+    <p>Je suis un étudiant canado-américain en informatique et en mathématiques appliquées qui termine actuellement son
+        baccalauréat à l’Université du New Hampshire. Dans le domaine de l’informatique et des mathématiques, je
+        m’intéresse
+        notamment à la programmation système, à l’analyse d’algorithmes et à l’apprentissage automatique. Je suis
+        également
+        une personne créative : je réalise des films et des vidéos, et j’écris de la poésie.
+
+        J’aime me considérer comme un hacker de la vieille école qui utilise la technologie pour créer des choses
+        et résoudre des problèmes intéressants, tout en me consacrant à ce qui me passionne le plus. Quand je ne
+        travaille pas sur mon laboratoire personnel ou que je ne fais pas d’expériences avec le café, on me trouve
+        généralement dehors, en train d’explorer cette magnifique planète que nous avons la chance d’appeler notre
+        maison.</p>
+
+    <p>Contact: <span id="copy-email" class="clickable-email">mlabrecque2002 [at] gmail (dot) com</span></p>
+
+</div>
+
+<hr class="solid">
+
+<div>
+
+    <h2>Projects</h2>
+    <div class="project-grid">
+
+        <Project
+                title="Billboard Top-40 Lookup"
+                description="Je suis DJ amateur à la station de radio de mon collège (91,3 FM WUNH) et notre particularité
+                est de ne diffuser que des chansons qui ne se sont jamais classées dans le Top 40 du palmarès Billboard
+                Hot 100. Or, il n’existait aucun moyen simple de déterminer si une chanson avait figuré ou non dans ce
+                palmarès. J’ai résolu ce problème en créant un petit programme en Python qui automatise la collecte des
+                données de Billboard et permet d’effectuer des recherches par artiste ou par titre."
+                tags={["Python", "Data Processing", "Data Analytics"]}
+        />
+
+        <Project
+                title="AI Music Detection Software"
+                description=""
+                tags={["Machine Learning", "Python", "Fourier Transformations"]}
+        />
+
+        <Project
+                title="Gostow"
+                descrption=""
+                tags={["Go"]}
+        />
+
+        <Project
+                title="Machine Learning Coffee"
+                descrption=""
+                tags={[]}
+        />
+
+        <Project
+                title="Homelab"
+                description="Over the last several months I have worked on designing and building a four-node Kubernetes cluster homelab for self-hosting my
+					   media collection as well as personal projects. The homelab is composed of three Lenovo ThinkCentre M90q computers serving as worker
+					   nodes, and a Raspberry Pi 5 which serves as the control node. Some services I run in this cluster include PiHole for custom DNS
+					   blocking, Jellyfin for manging music/movies, a private Forgejo instance for Git projects which I don't want to be publically hosted,
+					   Nextcloud to provide cloud storage/backups which utilizes an 8TB NAS for mass storage, and FreshRSS for media consumption."
+                tags={["Kubernetes", "System Administration", "Linux"]}
+        />
+
+        <Project
+                title="Zettk-CLI"
+                description="Un outil en ligne de commande que j’ai développé pour faciliter mon système de prise de notes (à savoir le système Zettelkasten popularisé par Leibniz)
+		       sans avoir besoin d’outils graphiques externes tels qu’Obsidian. Il fonctionnait en créant automatiquement des notes et en les reliant entre elles au fur et à mesure que je
+               les rédigeais, construisant ainsi un réseau de notes au fur et à mesure de mon apprentissage. Ce système s’intègre également directement à votre configuration Neovim,
+               permettant un flux de travail rapide et dynamique de prise de notes qui privilégie la consignation des connaissances sans les inconvénients liés à l’utilisation
+               d’une application graphique."
+                tags={["Go", "CLI"]}
+        />
+    </div>
+
+    <hr class="solid">
+
+  <Education/>
+</div>
+
+    <script>
+        const emailSpan = document.getElementById('copy-email');
+        const originalText = emailSpan.textContent;
+        emailSpan.addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText('mlabrecque2002@gmail.com');
+                emailSpan.textContent = 'Copied!';
+                setTimeout(() => {
+                    emailSpan.textContent = originalText;
+                }, 1500);
+            } catch (err) {
+                console.error('Failed to copy:', err);
+            }
+        });
+    </script>
+
+<style>
+
+    .profile-text {
+        flex: 1;
+        vertical-align: middle;
+    }
+
+    .project-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .clickable-email {
+        color: #88af6c;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    .clickable-email:hover {
+        color: #E5C07B;
+    }
+
+</style>

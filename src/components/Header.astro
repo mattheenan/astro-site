@@ -1,35 +1,55 @@
 ---
----
-<html>
-  <head>
-    <script src="https://kit.fontawesome.com/1f927a0858.js" crossorigin="anonymous"></script>
-  </head>
+const isFrench = Astro.currentLocale === 'fr';
+const localePrefix = isFrench ? '/fr' : '';
+const pathname = Astro.url.pathname;
+const englishPath = pathname.replace(/^\/fr(?=\/|$)/, '') || '/';
+const translatedPaths = new Set(['/', '/blog/', '/poetry/']);
+const frenchPath = isFrench
+  ? pathname
+  : translatedPaths.has(pathname)
+    ? pathname === '/' ? '/fr/' : `/fr${pathname}`
+    : '/fr/blog/';
 
-  <div class="split-header">
-      <a class="link" href=" https://ring.liampas.ca/left">&#8592; Left</a>
-      <a class="link" href=" https://ring.liampas.ca/right">Right &#8594;</a>
-  </div>
+const labels = isFrench
+  ? { home: 'Accueil', poetry: 'Poésie', blog: 'Blog' }
+  : { home: 'Home', poetry: 'Poetry', blog: 'Blog' };
+
+const title = isFrench
+? { title: "Salut, je m'appelle Matt."}
+    : { title: "Hi, I'm Matt."}
+---
+<script src="https://kit.fontawesome.com/1f927a0858.js" crossorigin="anonymous"></script>
 
 <h1 class="split-header">
-  <span id="name">MATT LABRECQUE</span>
+  <span id="name">{title.title}</span>
   <span id="links">
-    <a class="link" href="/">Home</a>
-    <a class="link" href="/poetry/">Poetry</a>
-    <a class="link" href="/blog/">Blog</a>
+    <a class="link" href={`${localePrefix}/`}>{labels.home}</a>
+    <a class="link" href={`${localePrefix}/poetry/`}>{labels.poetry}</a>
+    <a class="link" href={`${localePrefix}/blog/`}>{labels.blog}</a>
     
-      <span id="socials">
+    <span id="socials">
       <a href="https://www.youtube.com/@mttylbrq" aria-label="YouTube">
-      <i class="fa-brands fa-youtube"></i>
-      <span class="sr-only">YouTube</span>
-    </a>
-    <a href="https://codeberg.org/matthewlabrecque" aria-label="GitHub">
-      <i class="fa-brands fa-forgejo"></i>
-      <span class="sr-only">Codeberg</span>
-        </a>
+        <i class="fa-brands fa-youtube"></i>
+        <span class="sr-only">YouTube</span>
+      </a>
+      <a href="https://github.com/mattheenan" aria-label="GitHub">
+        <i class="fa-brands fa-github"></i>
+        <span class="sr-only">GitHub</span>
+      </a>
+      <a href="https://bsky.app/profile/mattheenan.bsky.social" aria-label="Bluesky">
+        <i class="fa-brands fa-bluesky"></i>
+        <span class="sr-only">Bluesky</span>
+      </a>
+
+    </span>
+
+    <span id="language-switcher" role="navigation" aria-label={isFrench ? 'Choisir la langue' : 'Choose language'}>
+      <a class="link" href={englishPath} lang="en" hreflang="en" aria-current={!isFrench ? 'page' : undefined}>EN</a>
+      <span aria-hidden="true">/</span>
+      <a class="link" href={frenchPath} lang="fr" hreflang="fr" aria-current={isFrench ? 'page' : undefined}>FR</a>
     </span>
   </span>
 </h1>
-</html>
 
 <style>
 .split-header {
@@ -57,6 +77,24 @@
 #socials a {
   display: inline-flex;
   align-items: center;
+  text-decoration: none;
+}
+
+#language-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  margin-left: 0.4rem;
+  font-size: 0.85rem;
+}
+
+#language-switcher .link {
+  padding-inline: 0.2rem;
+}
+
+#language-switcher [aria-current="page"] {
+  color: #abb2bf;
+  cursor: default;
   text-decoration: none;
 }
 

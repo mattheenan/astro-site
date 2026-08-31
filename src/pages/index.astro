@@ -1,135 +1,130 @@
 ---
 import Header from "../components/Header.astro"
 import Project from "../components/Project.astro"
+import Education from "../components/Education.astro"
 import "../styles/global.css"
 ---
 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>STOP CONSUMING. START CREATING.</title>
+    <title>Matt Heenan-Labrecque</title>
 </head>
-  <body>
-    <Header/>
+<Header/>
 
-	<div class="profile-text">
+<div class="profile-text">
 
-			<p>I'm currently in my Senior year at the University of New Hampshire, studying Applied Mathematics with a concentration in computational mathematics.
-			My interests include systems-programming, algorithm analysis, and machine learning. Additionally, I'm also a film maker, musician, poet, and in-general a 
-			tinkerer who uses technology to create and build things which interest me. When I'm not working on my homelab, studying for exams or failing to learn
-			Spansih, you can usually find me lifting weights or exploring the great outdoors of this beautiful planet we get to call home.</p>
+    <p>I'm a Canadian-American Computer-Science/Applied Mathematics student currently completing his Bachelor's
+        Degree at the University of New Hampshire. My interests within CS/Math include systems-programming,
+        algorithm analysis, and machine learning. I'm also a creative person, and make both films and movies as
+        well as write poetry.
+
+        I like to view myself as a hacker in the old-school vein who uses technology to
+        build things and solve interesting problems, as well as pursue the things which I find most interesting.
+        When I'm not working on my homelab or experimenting with coffee, you usually can find me outside and
+        exploring this beautiful planet that we get to call home.</p>
 
     <p>Contact: <span id="copy-email" class="clickable-email">mlabrecque2002 [at] gmail (dot) com</span></p>
 
-    </div>
+</div>
 
-    <hr class="solid">
+<hr class="solid">
 
-    <div>
+<div>
 
     <h2>Projects</h2>
-      <div class="project-grid">
-      
+    <div class="project-grid">
+
         <Project
-          title="Billboard Top-40 Lookup"
-        description="I DJ for fun at my college radio station (91.3FM WUNH) and our specialty is we only play music which has not charted in the Top 40 on the 
+                title="Billboard Top-40 Lookup"
+                description="I DJ for fun at my college radio station (91.3FM WUNH) and our specialty is we only play music which has not charted in the Top 40 on the
         Billboard Hot 100 charts. However there wasn't any easy way to determine if a song had charted or not. I solved this by writing a small Python program 
         which automates the retrieval of Billboard data and allows someone to querry it for artist and song data."
-        tags={["Python", "Data Processing", "Data Analytics"]}
-        />
-      
-        <Project
-          title="Julia to MATLAB Cross-Compiler"
-        description="A source-to-source compiler written in Python that translates Julia code into functionally equivalent MATLAB scripts. This project is ongoing as a final
-        project under the guidance of Professor Melanie Vinning, this project originally started out as a joke due to both of us disliking MATLAB but turned
-        into a full on project where I learned language design, parsing, and the challenges of cross-language translation."
-          tags={["Python", "Julia", "MATLAB", "Compiler Design", "AST", "Lexing", "Transpilation"]}
+                tags={["Python", "Data Processing", "Data Analytics"]}
         />
 
         <Project
-          title="Computer-Controlled Telescope"
-          description="I decided to put my design, engineering, and programming skills to the test by working on building a computer controlled telescope from scratch. The 
-          base of the project is using a custom gear assembly controlled by an Arduino microcontroller to adjust the telescope's position. The telescope also automatically
-          accounts for the Earth's rotation as well as the latitude/longitude during positioning. Updates will be posted on YouTube."
-          tags={["Robotics", "Python", "C++", "Data Processing", "Arduino", "Design/Prototyping"]}
+                title="AI Music Detection Software"
+                description="With the rise of Suno and other so called computer-generated music "
+                tags={["Machine Learning", "Python", "Fourier Transformations"]}
         />
 
         <Project
-          title="Homelab"
-          description="Over the last several months I have worked on designing and building a four-node Kubernetes cluster homelab for self-hosting my 
+                title="Gostow"
+                descrption="I always liked the idea behind GNU Stow, but my biggest problem with it was the fact that it
+                was a general purpose utility and not designed specifically for dotfile management. I wrote Gostow as a
+                replacement which specializes in only dotfile management, written entirely in Golang."
+                tags={["Go"]}
+        />
+
+        <Project
+                title="Machine Learning Coffee"
+                descrption="My Senior project"
+                tags={["Machine Learning", "Python", "Linear Algebra"]}
+        />
+
+        <Project
+                title="Homelab"
+                description="Over the last several months I have worked on designing and building a four-node Kubernetes cluster homelab for self-hosting my
 					   media collection as well as personal projects. The homelab is composed of three Lenovo ThinkCentre M90q computers serving as worker
 					   nodes, and a Raspberry Pi 5 which serves as the control node. Some services I run in this cluster include PiHole for custom DNS 
 					   blocking, Jellyfin for manging music/movies, a private Forgejo instance for Git projects which I don't want to be publically hosted,
 					   Nextcloud to provide cloud storage/backups which utilizes an 8TB NAS for mass storage, and FreshRSS for media consumption."
-          tags={["Kubernetes", "System Administration", "Linux"]}
+                tags={["Kubernetes", "System Administration", "Linux"]}
         />
 
         <Project
-          title="Zettk-CLI"
-          description="A CLI tool I developed to help with my note taking system (that being the Zettlekasten system popularized by Leibniz)
+                title="Zettk-CLI"
+                description="A CLI tool I developed to help with my note taking system (that being the Zettlekasten system popularized by Leibniz)
 		       without the need for external GUI tools such as Obsidian. It worked by auto creating and linking notes together as I
 		       create them, building the web of notes as I learn. This system hooks directly into your Neovim configuration as well,
 		       enabling a fast, dynamic workflow of note taking that prioritizes getting knowledge down without the hassle of using
 		       a GUI application."
-		  tags={["Go", "CLI"]}
+                tags={["Go", "CLI"]}
         />
-   </div>
-    
+    </div>
+
     <hr class="solid">
 
-    <h2>Education</h2>
-    <ul>
-      <li>The University of New Hampshire - Durham, NH (2025-Present)</li>
-      <ul>
-        <li>B.S. in Applied Mathematics, Concentration in Computations</li>
-        <li>Member, Hamel Honors and Scholars College</li>
-      </ul>
-      <li>Nashua Community College - Nashua, NH (2023-2025)</li>
-      <ul>
-        <li>A.S. in Computer Science</li>
-		<li>Member, Phi Theta Kappa Honor Society</li>
-        <li>Graduated Summa Cum Laude</li>
-      </ul>
-    </ul>
-  
-    <script>
-    const emailSpan = document.getElementById('copy-email');
-    const originalText = emailSpan.textContent;
-    emailSpan.addEventListener('click', async () => {
-        try {
-            await navigator.clipboard.writeText('mlabrecque2002@gmail.com');
-            emailSpan.textContent = 'Copied!';
-            setTimeout(() => {
-                emailSpan.textContent = originalText;
-            }, 1500);
-        } catch (err) {
-            console.error('Failed to copy:', err);
-        }
-    });
-  </script>
-</body>
+    <Education/>
 
+    <script>
+        const emailSpan = document.getElementById('copy-email');
+        const originalText = emailSpan.textContent;
+        emailSpan.addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText('mlabrecque2002@gmail.com');
+                emailSpan.textContent = 'Copied!';
+                setTimeout(() => {
+                    emailSpan.textContent = originalText;
+                }, 1500);
+            } catch (err) {
+                console.error('Failed to copy:', err);
+            }
+        });
+    </script>
+</div>
 <style>
-  
-  .profile-text {
-    flex: 1;
-    vertical-align: middle;
-  }
-  
-  .project-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-  
-  .clickable-email {
-    color: #88af6c;
-    cursor: pointer;
-    text-decoration: underline;
-  }
-  
-  .clickable-email:hover {
-    color: #E5C07B;
-  }
+
+    .profile-text {
+        flex: 1;
+        vertical-align: middle;
+    }
+
+    .project-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .clickable-email {
+        color: #88af6c;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    .clickable-email:hover {
+        color: #E5C07B;
+    }
 
 </style>
