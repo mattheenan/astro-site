@@ -5,26 +5,26 @@ const pathname = Astro.url.pathname;
 const englishPath = pathname.replace(/^\/fr(?=\/|$)/, '') || '/';
 const translatedPaths = new Set(['/', '/blog/', '/poetry/']);
 const frenchPath = isFrench
-  ? pathname
-  : translatedPaths.has(pathname)
-    ? pathname === '/' ? '/fr/' : `/fr${pathname}`
-    : '/fr/blog/';
+    ? pathname
+    : translatedPaths.has(pathname)
+        ? pathname === '/' ? '/fr/' : `/fr${pathname}`
+        : '/fr/blog/';
 
 const labels = isFrench
-  ? { home: 'Accueil', poetry: 'Poésie', blog: 'Blog' }
-  : { home: 'Home', poetry: 'Poetry', blog: 'Blog' };
+    ? {home: 'Accueil', blog: 'Blog'}
+    : {home: 'Home', blog: 'Blog'};
 
 const title = isFrench
-? { title: "Salut, je m'appelle Matt."}
-    : { title: "Hi, I'm Matt."}
+    ? {title: "Salut, je m'appelle Matt."}
+    : {title: "Hi, I'm Matt."}
 ---
 <script src="https://kit.fontawesome.com/1f927a0858.js" crossorigin="anonymous"></script>
 
 <h1 class="split-header">
-  <span id="name">{title.title}</span>
-  <span id="links">
+    <!-- TODO: Change the salutation/welcome to be thel ink to home -->
+    <span id="name">{title.title}</span>
+    <span id="links">
     <a class="link" href={`${localePrefix}/`}>{labels.home}</a>
-    <a class="link" href={`${localePrefix}/poetry/`}>{labels.poetry}</a>
     <a class="link" href={`${localePrefix}/blog/`}>{labels.blog}</a>
     
     <span id="socials">
@@ -32,14 +32,15 @@ const title = isFrench
         <i class="fa-brands fa-youtube"></i>
         <span class="sr-only">YouTube</span>
       </a>
+      <a href="https://x.com/mhlvswrld" aria-label="X">
+        <i class="fa-brands fa-x-twitter"></i>
+        <span class="sr-only">X</span>
+      </a>
       <a href="https://github.com/mattheenan" aria-label="GitHub">
         <i class="fa-brands fa-github"></i>
         <span class="sr-only">GitHub</span>
       </a>
-      <a href="https://bsky.app/profile/mattheenan.bsky.social" aria-label="Bluesky">
-        <i class="fa-brands fa-bluesky"></i>
-        <span class="sr-only">Bluesky</span>
-      </a>
+
 
     </span>
 
@@ -52,68 +53,71 @@ const title = isFrench
 </h1>
 
 <style>
-.split-header {
+    .split-header {
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    vertical-align: middle;
-    width: 100%;
-}
-#name {
-    text-align: center;
-    letter-spacing: 7px;
-  }
-#links {
-  vertical-align: middle;
-}
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        vertical-align: middle;
+        width: 100%;
+    }
 
-#socials {
-  all: unset;
-  display: inline-flex;
-  gap: 0.4rem;
-}
+    #name {
+        text-align: center;
+        letter-spacing: 7px;
+    }
 
-#socials a {
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-}
+    #links {
+        vertical-align: middle;
+    }
 
-#language-switcher {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.15rem;
-  margin-left: 0.4rem;
-  font-size: 0.85rem;
-}
+    #socials {
+        all: unset;
+        display: inline-flex;
+        gap: 0.4rem;
+    }
 
-#language-switcher .link {
-  padding-inline: 0.2rem;
-}
+    #socials a {
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+    }
 
-#language-switcher [aria-current="page"] {
-  color: #abb2bf;
-  cursor: default;
-  text-decoration: none;
-}
+    #language-switcher {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.15rem;
+        margin-left: 0.4rem;
+        font-size: 0.85rem;
+    }
 
-.link {
-    color: #88af6c;
-    cursor: pointer;
-    text-decoration: underline;
-  }
+    #language-switcher .link {
+        padding-inline: 0.2rem;
+    }
 
-.link:hover {
-  color: #E5C07B;
-}
+    #language-switcher [aria-current="page"] {
+        color: #abb2bf;
+        cursor: default;
+        text-decoration: none;
+    }
 
-.sr-only {
-  position: absolute;
-  width: 1px; height: 1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
+    .link {
+        color: #88af6c;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    .link:hover {
+        color: #E5C07B;
+    }
+
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+    }
 
 </style>

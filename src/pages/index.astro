@@ -8,25 +8,36 @@ import "../styles/global.css"
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Matt Heenan-Labrecque</title>
+    <title>Matt Heenan Labrecque</title>
 </head>
 <Header/>
 
 <div class="profile-text">
 
-    <p>I'm a Canadian-American Computer-Science/Applied Mathematics student currently completing his Bachelor's
-        Degree at the University of New Hampshire. My interests within CS/Math include systems-programming,
-        algorithm analysis, and machine learning. I'm also a creative person, and make both films and movies as
-        well as write poetry.
-
-        I like to view myself as a hacker in the old-school vein who uses technology to
-        build things and solve interesting problems, as well as pursue the things which I find most interesting.
-        When I'm not working on my homelab or experimenting with coffee, you usually can find me outside and
-        exploring this beautiful planet that we get to call home.</p>
+    <p>I'm a Canadian-American applied mathematician currently completing my Bachelor's degree at the University of New
+        Hampshire. My areas of study are in the fields of computational mathematics as well as machine learning. My
+        hobbies include film making, music, poetry, and being a white-hat hacker who uses technology to build projects
+        which I learn from. When I'm not working on homework, you can either find me experimenting with coffee or
+        exploring this beautiful planet we get to call home.
+    </p>
 
     <p>Contact: <span id="copy-email" class="clickable-email">mlabrecque2002 [at] gmail (dot) com</span></p>
 
 </div>
+
+<hr class="solid">
+
+<h2>My Learning Interests</h2>
+<p>While my degree is in applied mathematics and focuses primarily on computer science, my learning interests are
+    widespread and range from Philosophy and Theology, to Psychology and Sports Medicine. Currently I am reading The
+    Master and His Emissary, and The Proof in the Code.</p>
+<p>My current coursework (updated through Autumn 2026):</p>
+<ul>
+    <li><a href="https://courses.unh.edu/class/202610/10157">MATH739</a>- Applied Regression Analysis</li>
+    <li><a href="https://courses.unh.edu/class/202610/10394">MATH525</a>- Linearity I</li>
+    <li><a href="https://courses.unh.edu/class/202610/10349">PHYS407</a>- General Physics I</li>
+    <li><a href="https://courses.unh.edu/class/202610/11670">ANTH550H</a>- Introduction to Forensic Anthropology</li>
+</ul>
 
 <hr class="solid">
 
@@ -36,41 +47,20 @@ import "../styles/global.css"
     <div class="project-grid">
 
         <Project
-                title="Billboard Top-40 Lookup"
-                description="I DJ for fun at my college radio station (91.3FM WUNH) and our specialty is we only play music which has not charted in the Top 40 on the
-        Billboard Hot 100 charts. However there wasn't any easy way to determine if a song had charted or not. I solved this by writing a small Python program 
-        which automates the retrieval of Billboard data and allows someone to querry it for artist and song data."
-                tags={["Python", "Data Processing", "Data Analytics"]}
-        />
-
-        <Project
-                title="AI Music Detection Software"
-                description="With the rise of Suno and other so called computer-generated music "
-                tags={["Machine Learning", "Python", "Fourier Transformations"]}
-        />
-
-        <Project
-                title="Gostow"
-                descrption="I always liked the idea behind GNU Stow, but my biggest problem with it was the fact that it
-                was a general purpose utility and not designed specifically for dotfile management. I wrote Gostow as a
-                replacement which specializes in only dotfile management, written entirely in Golang."
-                tags={["Go"]}
-        />
-
-        <Project
-                title="Machine Learning Coffee"
-                descrption="My Senior project"
+                title="Senior Research Project"
+                description="A research project into using machine learning to see if one could algorithmically predict
+                what the best way to brew a cup of coffee is based on the bean origin, altitude, and other factors."
                 tags={["Machine Learning", "Python", "Linear Algebra"]}
         />
 
         <Project
-                title="Homelab"
-                description="Over the last several months I have worked on designing and building a four-node Kubernetes cluster homelab for self-hosting my
-					   media collection as well as personal projects. The homelab is composed of three Lenovo ThinkCentre M90q computers serving as worker
-					   nodes, and a Raspberry Pi 5 which serves as the control node. Some services I run in this cluster include PiHole for custom DNS 
-					   blocking, Jellyfin for manging music/movies, a private Forgejo instance for Git projects which I don't want to be publically hosted,
-					   Nextcloud to provide cloud storage/backups which utilizes an 8TB NAS for mass storage, and FreshRSS for media consumption."
-                tags={["Kubernetes", "System Administration", "Linux"]}
+                title="Gostow"
+                description="GNU Stow is a very popular utility that is used by both Linux and macOS users to manage &quot;dotfiles&quot;
+                (configuration files which are stored as text inside a special folder). However, GNU Stow was originally
+                written to help software developers build and test their programs, so managing dotfiles wasn't their original
+                goal, resulting in many workarounds having to be done in order for dotfile management to work. I wrote Gostow
+                as a standalone replacement which specializes only in dotfile management, which was written entirely in Go."
+                tags={["Go"]}
         />
 
         <Project
@@ -88,28 +78,8 @@ import "../styles/global.css"
 
     <Education/>
 
-    <script>
-        const emailSpan = document.getElementById('copy-email');
-        const originalText = emailSpan.textContent;
-        emailSpan.addEventListener('click', async () => {
-            try {
-                await navigator.clipboard.writeText('mlabrecque2002@gmail.com');
-                emailSpan.textContent = 'Copied!';
-                setTimeout(() => {
-                    emailSpan.textContent = originalText;
-                }, 1500);
-            } catch (err) {
-                console.error('Failed to copy:', err);
-            }
-        });
-    </script>
 </div>
 <style>
-
-    .profile-text {
-        flex: 1;
-        vertical-align: middle;
-    }
 
     .project-grid {
         display: flex;

@@ -8,29 +8,39 @@ import Education from "../../components/Education.astro";
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Matt Heenan-Labrecque</title>
+    <title>Matt Heenan Labrecque</title>
 </head>
 
 <Header/>
 
 <div class="profile-text">
 
-    <p>Je suis un étudiant canado-américain en informatique et en mathématiques appliquées qui termine actuellement son
-        baccalauréat à l’Université du New Hampshire. Dans le domaine de l’informatique et des mathématiques, je
-        m’intéresse
-        notamment à la programmation système, à l’analyse d’algorithmes et à l’apprentissage automatique. Je suis
-        également
-        une personne créative : je réalise des films et des vidéos, et j’écris de la poésie.
-
-        J’aime me considérer comme un hacker de la vieille école qui utilise la technologie pour créer des choses
-        et résoudre des problèmes intéressants, tout en me consacrant à ce qui me passionne le plus. Quand je ne
-        travaille pas sur mon laboratoire personnel ou que je ne fais pas d’expériences avec le café, on me trouve
-        généralement dehors, en train d’explorer cette magnifique planète que nous avons la chance d’appeler notre
-        maison.</p>
+    <p>
+        Je suis un mathématicien appliqué canado-américain qui termine actuellement son baccalauréat à l’Université du
+        New Hampshire. Mes domaines d’étude portent sur les mathématiques computationnelles ainsi que sur
+        l’apprentissage automatique. Parmi mes passe-temps, j’aime réaliser des films, la musique, la poésie et être un
+        hacker « white hat » qui utilise la technologie pour mettre sur pied des projets qui m’enrichissent. Quand je ne
+        suis pas en train de faire mes devoirs, vous pouvez me trouver soit en train de faire des expériences avec le
+        café, soit en train d’explorer cette magnifique planète que nous avons la chance d’appeler notre foyer.
+    </p>
 
     <p>Contact: <span id="copy-email" class="clickable-email">mlabrecque2002 [at] gmail (dot) com</span></p>
 
 </div>
+
+<hr class="solid">
+
+<h2>Mes intérêts en matière d'apprentissage</h2>
+<p>Bien que mon diplôme soit en mathématiques appliquées et porte principalement sur l’informatique, mes centres
+    d’intérêt sont très variés et vont de la philosophie et de la théologie à la psychologie et à la médecine du sport.
+    En ce moment, je lis *The Master and His Emissary* et *The Proof in the Code*.</p>
+<p>Mes cours actuels (mise à jour jusqu'à l'automne 2026):</p>
+<ul>
+    <li><a href="https://courses.unh.edu/class/202610/10157">MATH739</a>- Applied Regression Analysis</li>
+    <li><a href="https://courses.unh.edu/class/202610/10394">MATH525</a>- Linearity I</li>
+    <li><a href="https://courses.unh.edu/class/202610/10349">PHYS407</a>- General Physics I</li>
+    <li><a href="https://courses.unh.edu/class/202610/11670">ANTH550H</a>- Introduction to Forensic Anthropology</li>
+</ul>
 
 <hr class="solid">
 
@@ -40,41 +50,20 @@ import Education from "../../components/Education.astro";
     <div class="project-grid">
 
         <Project
-                title="Billboard Top-40 Lookup"
-                description="Je suis DJ amateur à la station de radio de mon collège (91,3 FM WUNH) et notre particularité
-                est de ne diffuser que des chansons qui ne se sont jamais classées dans le Top 40 du palmarès Billboard
-                Hot 100. Or, il n’existait aucun moyen simple de déterminer si une chanson avait figuré ou non dans ce
-                palmarès. J’ai résolu ce problème en créant un petit programme en Python qui automatise la collecte des
-                données de Billboard et permet d’effectuer des recherches par artiste ou par titre."
-                tags={["Python", "Data Processing", "Data Analytics"]}
-        />
-
-        <Project
-                title="AI Music Detection Software"
-                description=""
-                tags={["Machine Learning", "Python", "Fourier Transformations"]}
-        />
-
-        <Project
-                title="Gostow"
-                descrption=""
-                tags={["Go"]}
-        />
-
-        <Project
-                title="Machine Learning Coffee"
-                descrption=""
+                title="Résidence pour seniors"
+                description="Un projet de recherche visant à utiliser l'apprentissage automatique pour déterminer s'il est possible de prédire de manière algorithmique
+                quelle est la meilleure façon de préparer une tasse de café en fonction de l'origine des grains, de l'altitude et d'autres facteurs."
                 tags={[]}
         />
 
         <Project
-                title="Homelab"
-                description="Over the last several months I have worked on designing and building a four-node Kubernetes cluster homelab for self-hosting my
-					   media collection as well as personal projects. The homelab is composed of three Lenovo ThinkCentre M90q computers serving as worker
-					   nodes, and a Raspberry Pi 5 which serves as the control node. Some services I run in this cluster include PiHole for custom DNS
-					   blocking, Jellyfin for manging music/movies, a private Forgejo instance for Git projects which I don't want to be publically hosted,
-					   Nextcloud to provide cloud storage/backups which utilizes an 8TB NAS for mass storage, and FreshRSS for media consumption."
-                tags={["Kubernetes", "System Administration", "Linux"]}
+                title="Gostow"
+                description="GNU Stow est un utilitaire très populaire utilisé aussi bien par les utilisateurs de Linux que de macOS pour gérer les « dotfiles »
+                (fichiers de configuration stockés au format texte dans un dossier spécifique). Cependant, GNU Stow a été initialement
+                conçu pour aider les développeurs à compiler et tester leurs programmes ; la gestion des dotfiles n’était donc pas son objectif
+                premier, ce qui a nécessité de nombreuses solutions de contournement pour que cette gestion fonctionne. J'ai écrit Gostow
+                pour en tant qu'outil autonome dédié exclusivement à la gestion des fichiers dot, entièrement écrit en Go."
+                tags={["Go"]}
         />
 
         <Project
@@ -90,24 +79,8 @@ import Education from "../../components/Education.astro";
 
     <hr class="solid">
 
-  <Education/>
+    <Education/>
 </div>
-
-    <script>
-        const emailSpan = document.getElementById('copy-email');
-        const originalText = emailSpan.textContent;
-        emailSpan.addEventListener('click', async () => {
-            try {
-                await navigator.clipboard.writeText('mlabrecque2002@gmail.com');
-                emailSpan.textContent = 'Copied!';
-                setTimeout(() => {
-                    emailSpan.textContent = originalText;
-                }, 1500);
-            } catch (err) {
-                console.error('Failed to copy:', err);
-            }
-        });
-    </script>
 
 <style>
 
